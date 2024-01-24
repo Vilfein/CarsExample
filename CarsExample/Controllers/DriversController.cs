@@ -33,7 +33,7 @@ namespace CarsExample.Controllers
                 return NotFound();
             }
 
-            var driver = await _context.Driver
+            var driver = await _context.Driver.Include(d => d.Cars)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (driver == null)
             {
